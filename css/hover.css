@@ -1,0 +1,159 @@
+@charset "utf-8";
+*{box-sizing: border-box;}
+	body{background: #2f3238; color: #fff; font-weight: 400;
+		font-size: 1em}
+	img{border: 0}
+	a{outline: none; text-decoration: none;cursor: pointer}
+
+
+	.grid:after{content: "";display: block;clear: both}
+
+	.grid {
+	position: relative;
+	margin: 10px;
+	max-width: 280px;
+	list-style: none;
+	text-align: center;
+	float: left;
+}
+.grid figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	/*margin: 10px;*/
+	max-width: 280px;
+	width: 280px;
+	height: auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+.grid figure img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: 100%;
+	/*opacity: 0.8;*/
+}
+
+.grid figure figcaption {
+	padding: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+	pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+figure.effect-hera h2 {
+	font-size: 32px;
+}
+
+figure.effect-hera h2,
+figure.effect-hera p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+	-webkit-transform-origin: 50%;
+	transform-origin: 50%;
+}
+
+figure.effect-hera figcaption::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #fff;
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,-45deg) scale3d(0,0,1);
+	transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,-45deg) scale3d(0,0,1);
+	-webkit-transform-origin: 50%;
+	transform-origin: 50%;
+}
+
+figure.effect-hera p {
+	width: 100px;
+	text-transform: none;
+	font-size: 18px;
+	line-height: 2;
+}
+
+figure.effect-hera p a {
+	color: #fff;
+}
+
+figure.effect-hera p a:hover,
+figure.effect-hera p a:focus {
+	opacity: 0.8;
+}
+
+figure.effect-hera p a{
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+}
+
+figure.effect-hera p a:first-child a{
+	-webkit-transform: translate3d(-60px,-60px,0);
+	transform: translate3d(-60px,-60px,0);
+}
+
+figure.effect-hera p a:nth-child(2) a{
+	-webkit-transform: translate3d(60px,-60px,0);
+	transform: translate3d(60px,-60px,0);
+}
+
+/*figure.effect-hera p a:nth-child(3) i {
+	-webkit-transform: translate3d(-60px,60px,0);
+	transform: translate3d(-60px,60px,0);
+}
+
+figure.effect-hera p a:nth-child(4) i {
+	-webkit-transform: translate3d(60px,60px,0);
+	transform: translate3d(60px,60px,0);
+}
+*/
+figure.effect-hera:hover figcaption::before {
+	opacity: 1;
+	-webkit-transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,-45deg) scale3d(1,1,1);
+	transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,-45deg) scale3d(1,1,1);
+}
+
+figure.effect-hera:hover h2 {
+	opacity: 0;
+	-webkit-transform: translate3d(-50%,-50%,0) scale3d(0.8,0.8,1);
+	transform: translate3d(-50%,-50%,0) scale3d(0.8,0.8,1);
+}
+figure.effect-hera:hover a{
+	opacity: 1;
+}
+
+figure.effect-hera:hover p a:empty {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0); /* just because it's stronger than nth-child */
+	opacity: 1;
+}
