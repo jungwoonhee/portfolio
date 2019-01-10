@@ -6,22 +6,8 @@
 	<script src="./js/jquery.js"></script>
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/hover.css">
-	<style>
-		body{background: #545454;}
-		.wrap{width: 900px;margin:0 auto;padding-bottom:400px;}
-		#top_menu{width: 900px;height: 114px;background: #545454;position: fixed;z-index: 1}
-		#top_menu:after{content:"";display: block;clear: both;}
-		#logo{float: left;width:125px;padding-top:40px;}
-		
-		#top_menu ul{float:right;}
-		#top_menu ul:after{content:"";display: block;clear: both;}
-		#top_menu ul li{float: left;}
-		#top_menu ul li a{display: block;color:#ffffff;
-			padding:59px 0 0 63px;text-align:center;}
-		#top_menu ul li.on a{color:#000;font-weight:bold;}
-		#contents {padding-top:114px;}
-		#contents>div{width: 900px;height: 600px;}
-	</style>
+	<link rel="stylesheet" href="./css/css.css">
+
 	<script>
 		$(function(){
 			var menu = $("#top_menu>ul>li");
@@ -48,7 +34,52 @@
 				})
 
 				
-			})
+			});
+
+			// $("body").append("<div id='glayLayer'></div><div id='overLayer'></div>");
+			// $("a.modal").click(function(){
+			// 	// e.preventDefault();
+			// 	$("#glayLayer").show();
+			// 	$("#overLayer").show().html("<img src='"+$(this).attr("href")+"'>")
+			// 	return false;
+			// })
+			// $("#glayLayer,#overLayer").click(function(){
+			// 	$("#glayLayer").hide();
+			// 	$("#overLayer").hide();
+			// })
+
+			$("body").append("<div id='glayLayer'></div><div id='overLayer'></div>");
+		    $("#glayLayer").click(function(){
+		      	$(this).hide();
+		      	$("#overLayer").hide();
+				$("#glayLayer").hide();
+				 /*모달창닫을때시작*/
+				$('html,body').css({'overflow':'auto','height':'auto'});
+				$('body').off('scroll touchmove mousewheel');
+				/*모달창닫을때끝*/
+		   });  
+		    $("#overLayer").click(function(){
+				$(this).hide();
+				$("#glayLayer").hide();
+				$('html,body').css({'overflow':'auto','height':'auto'});
+				$('body').off('scroll touchmove mousewheel');
+			/*모달창닫을때끝*/
+		   });  
+		   $(".modal").click(function(){
+		    	$("#glayLayer").show();
+		      	$("#overLayer").show().html("<div class='scroll' ><img src='"+$(this).attr("href")+"' /></div> ");
+			
+			/*모달열었을때 시작*/
+		    $('html, body').css({'overflow':'hidden','height':'auto'});
+			return false;
+		 	$('body').on('scroll touchmove mousewheel', function(event){
+			event.preventDefault(e);
+			event.stopPropagation(e);
+			return false;
+		   });
+		   /*모달열었을때 끝*/
+		   });
+   
 		});
 	
 	</script>
@@ -57,106 +88,127 @@
 	<div class="wrap">
 		<header id="top_menu">
 			<h1 id="logo">
-				<a href="#"><img src="../images/logoPaper.png" alt="Paper"></a>
+				<a href="#">PORTFOLIO</a>
 			</h1>
 			<ul>
-				<li class="on"><a href="#paper">paper</a></li>
-				<li><a href="#works">works</a></li>
-				<li><a href="#graphic">graphic</a></li>
-				<li><a href="#contact">contact</a></li>
+				<li class="on"><a href="#paper">Works</a></li>
+				<li><a href="#works">CMS</a></li>
+				<li><a href="#graphic">Design</a></li>
+				
 			</ul>
 		</header>
 
 		<section id="contents">
-			<div id="paper">
-				<div class="content">
-
-					<div class="grid">
-						<figure class="effect-hera">
-							<img src="./img/17.jpg" alt="img">
-							<figcaption>
-								<h2><span>hera</span></h2>
-								<p>
-									<a href="#">상세보기</a><br>
-									<a href="#">이동하기</a>
-								</p>
-							</figcaption>
-						</figure>
-					</div>
-		
-					<div class="grid">
-						<figure class="effect-hera">
-							<img src="./img/17.jpg" alt="img">
-							<figcaption>
-								<h2><span>hera</span></h2>
-								<p>
-									<a href="#">상세보기</a><br>
-									<a href="#">이동하기</a>
-								</p>
-							</figcaption>
-						</figure>
-					</div>
-
-					<div class="grid">
-						<figure class="effect-hera">
-							<img src="./img/17.jpg" alt="img">
-							<figcaption>
-								<h2><span>hera</span></h2>
-								<p>
-									<a href="#">상세보기</a><br>
-									<a href="#">이동하기</a>
-								</p>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
 			
-
+			<div id="paper">
+				<h1>Works</h1>
 				<div class="content">
+
 					<div class="grid">
-						<figure class="effect-hera">
-							<img src="./img/17.jpg" alt="img">
-							<figcaption>
-								<h2><span>hera</span></h2>
-								<p>
-									<a href="#">상세보기</a><br>
-									<a href="#">이동하기</a>
-								</p>
-							</figcaption>
-						</figure>
-					</div>
 					
-					<div class="grid">
 						<figure class="effect-hera">
-							<img src="./img/17.jpg" alt="img">
+							<img src="./img/tea.jpg" alt="img">
 							<figcaption>
-								<h2><span>hera</span></h2>
+								<h2><span><img src="./img/logo.png" alt="osul"></span></h2>
 								<p>
-									<a href="#">상세보기</a><br>
-									<a href="#">이동하기</a>
+									<a href="./img/osul.jpg" class="modal">상세보기</a><br>
+									<a href="https://jungwoonhee.github.io/OSULLOC/" target="_blank">이동하기</a>
+								</p>
+							</figcaption>
+							
+						</figure>
+						
+						<figure class="effect-hera">
+							<img src="./img/cos.jpg" alt="img">
+							<figcaption>
+								<h2><span>COSMETIC</span></h2>
+								<p>
+									<a href="./img/cosmetic.jpg" class="modal">상세보기</a><br>
+									<a href="https://jungwoonhee.github.io/company/" target="_blank">이동하기</a>
 								</p>
 							</figcaption>
 						</figure>
+
+						
 					</div>
-				
-					<div class="grid">
-						<figure class="effect-hera">
-							<img src="./img/17.jpg" alt="img">
-							<figcaption>
-								<h2><span>hera</span></h2>
-								<p>
-									<a href="#">상세보기</a><br>
-									<a href="#">이동하기</a>
-								</p>
-							</figcaption>
-						</figure>
+					<div class="text">
+						오설록은 fullpage를 사용한 이미지 중심의 사이트입니다.<br>
+						COSMETIC은 Bootstrap을 이용하여 제작한 사이트입니다.<br>
+						사이트는 chrome에서 최적화됩니다.
 					</div>
 				</div>
 			</div>		
 
-			<div id="works"><img src="../images/work.jpg" alt="img2"></div>
-			<div id="grahpic"><img src="../images/email.jpg" alt="img3"></div>
-			<div id="contact"><img src="../images/email.jpg" alt="img3"></div>
+			<div id="works">
+				<h1>CMS</h1>
+				<div class="content">
+					<div class="grid">
+						<figure class="effect-hera">
+							<img src="./img/coffee.jpg" alt="img">
+							<figcaption>
+								<h2><span>TwosomePlace</span></h2>
+								<p>
+									<a href="./img/ts.jpg" class="modal">상세보기</a><br>
+									<a href="http://woonhee.dothome.co.kr/main/" target="_blank">이동하기</a>
+								</p>
+							</figcaption>
+						</figure>
+					
+						<figure class="effect-hera">
+							<img src="./img/tooth.jpg" alt="img">
+							<figcaption>
+								<h2><span><img src="./img/clogo.gif" alt="cura"></span></h2>
+								<p>
+									<a href="#">상세보기</a><br>
+									<a href="http://ahoy519.dothome.co.kr/wp/" target="_blank">이동하기</a>
+								</p>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<div class="text">
+					CMS(Contents Management System) 프로그램을 사용한 사이트입니다.<br>
+					TwosomePlace는 한국형 CMS인 그누보드를 사용했습니다.<br>
+					CURAPROX는 외국형 CMS인 워드프레스를 사용했습니다.<br>
+					사이트는 chrome에서 최적화됩니다.
+				</div>
+			</div>
+
+			<div id="grahpic">
+				<h1>Design</h1>
+				<div class="content">
+					<div class="grid">
+						<figure class="effect-hera">
+							<img src="./img/bana.jpg" alt="img">
+							<figcaption>
+								<h2><span><img src="./img/dlogo.png" alt="del"></span></h2>
+								<p>
+									<a href="./img/del.jpg" class="modal">상세보기</a><br>
+									<a href="https://ovenapp.io/view/KuC7agJxT0bClkXp93dreORH5vpBqOFg/" target="_blank">이동하기</a>
+								</p>
+							</figcaption>
+						</figure>
+					
+						<figure class="effect-hera">
+							<img src="./img/com.jpg" alt="img">
+							<figcaption>
+								<h2><span>Himedia</span></h2>
+								<p>
+									<a href="https://jungwoonhee.github.io/university/" target="_blank">한국대학교</a><br>
+									<a href="https://jungwoonhee.github.io/travel/" target="_blank">여행사</a>
+								</p>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<div class="text">
+					기초를 다지기 위해 연습한 사이트입니다.<br>
+					DelMonte는 Ovenapp을 이용하여 앱디자인을 한 사이트입니다.<br>
+					Himedia는 웹디자인과 기초학습을 위해 연습한 사이트입니다.<br>
+					사이트는 chrome에서 최적화됩니다.
+				</div>
+			</div>
+			
 		</section>
 
 	</div>
